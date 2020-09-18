@@ -1,8 +1,9 @@
 import React from "react";
 import "./App.css";
+import Table from "./Components/Table";
 
-function App(): React.JSX {
-  return <div className='App'>Default Text</div>;
+function App(): JSX.Element {
+  return <Table />;
 }
 
 export default App;
