@@ -41,4 +41,48 @@ export const GridItem = styled.div`
     text-align: center;
     font-size: 0.7em;
   }
+  &.noble_gases {
+    color: #7e57c2;
+  }
+
+  &.alkali_metals {
+    color: #ef5350;
+  }
+
+  &.alkali_earth_metals {
+    color: #ff7043;
+  }
+
+  &.transition_metals {
+    color: #ff9800;
+  }
+
+  &.basic_metals {
+    color: #66bb6a;
+  }
+
+  &.metalloids {
+    color: #26c6da;
+  }
+
+  &.amphigens,
+  &.hydrogen {
+    color: #42a5f5;
+  }
+
+  &.halogens {
+    color: #5c6bc0;
+  }
+
+  &.lanthanoids {
+    color: #7e57c2;
+  }
+
+  &.actinoids {
+    color: #ab47bc;
+  }
+
+  &.clear {
+    color: #78909c;
+  }
 `;

@@ -33,6 +33,7 @@ function Table(): JSX.Element {
                 <GridItem
                   key={index}
                   color={currentElementProperties.cpkHexColor}
+                  className={currentElementProperties.group}
                   onClick={() =>
                     showElementProperties(currentElementProperties)
                   }
