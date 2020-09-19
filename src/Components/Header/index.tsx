@@ -24,7 +24,6 @@ function Header(): JSX.Element {
       <IconButton>
         <ArrowBackIcon />
       </IconButton>
-
       <h1>Periodic Table</h1>
     </HeaderElement>
   );

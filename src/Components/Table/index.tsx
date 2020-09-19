@@ -1,32 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Wrapper, GridTemplate, GridItem } from "./table.styles";
 import { ElementsItem } from "../../ElementsItem";
+import ActiveElementCard from "../ActiveElementCard/index";
 import Header from "../Header/index";
-const Elements: [[]] = require("../../data/pt.json");
+const Elements: [] = require("../../data/pt.json").flat(); // reducing array nesting
 const DataElements: ElementsItem[] = require("../../data/elements.json");
-
+const NotSyntheticElements: number[] = Elements.slice(0, 126);
+const IGNORED_ELEMENTS_NUMBERS = [0, -1, -2];
 function Table(): JSX.Element {
-  function elementsArrayModify(): number[] {
-    const array: number[] = Elements.flat();
-    array.splice(126, array.length);
-    return array;
-  }
-  function showElementProperties(item: ElementsItem) {
-    console.log(item);
+  const [activeElement, setActiveElement] = useState<number>(25);
+
+  function showElementProperties(item: number) {
+    setActiveElement(item);
   }
   return (
     <>
       <Header />
       <Wrapper>
+        <ActiveElementCard active={activeElement} />
         <GridTemplate>
-          {elementsArrayModify().map((element: number, index) => {
+          {NotSyntheticElements.map((element: number, index: number) => {
             const currentElement: number = element;
             const currentElementProperties = DataElements[currentElement - 1];
-            if (
-              currentElement === 0 ||
-              currentElement === -1 ||
-              currentElement === -2
-            ) {
+            if (IGNORED_ELEMENTS_NUMBERS.includes(currentElement)) {
               return <GridItem key={index} disabled></GridItem>;
             } else {
               return (
@@ -35,11 +31,11 @@ function Table(): JSX.Element {
                   color={currentElementProperties.cpkHexColor}
                   className={currentElementProperties.group}
                   onClick={() =>
-                    showElementProperties(currentElementProperties)
+                    showElementProperties(currentElementProperties.atomic)
                   }
                 >
                   <p>{currentElement}</p>
-                  <h3>{currentElementProperties.symbol}</h3>
+                  <p>{currentElementProperties.symbol}</p>
                   <p>{currentElementProperties.name}</p>
                 </GridItem>
               );

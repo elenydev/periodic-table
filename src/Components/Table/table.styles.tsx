@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   background-color: #0e1a1b;
 `;
 
-export const GridTemplate = styled.div`
+export const GridTemplate = styled.ul`
   display: grid;
   width: 100%;
   min-height: 100%;
@@ -18,26 +18,31 @@ export const GridTemplate = styled.div`
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   background-color: #132526;
+
+  @media (max-width: 1250px) {
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 5px 12px;
+  }
 `;
 
-export const GridItem = styled.div`
+export const GridItem = styled.li`
   display: flex;
   flex-direction: column;
   color: ${(props) => (props.disabled ? "transparent" : "#" + props.color)};
   align-items: center;
   cursor: ${(props) => (props.disabled ? "auto" : "pointer")};
-
   & > p {
     width: 100%;
     font-size: 0.6em;
     padding: 3px;
   }
-  & > h3 {
+  & > p:nth-child(2) {
     width: 100%;
     text-align: center;
     font-size: 2em;
   }
-  & > p:nth-last-child(1) {
+  & > p:nth-child(3) {
     text-align: center;
     font-size: 0.7em;
   }
@@ -84,5 +89,23 @@ export const GridItem = styled.div`
 
   &.clear {
     color: #78909c;
+  }
+  @media (max-width: 1250px) {
+    display: ${(props) => (props.disabled ? "none" : "flex")};
+    & > p {
+      font-size: 0.6em;
+      padding: 3px;
+    }
+    & > p:nth-child(2) {
+      font-size: 1.5em;
+    }
+    & > p:nth-child(3) {
+      font-size: 0.6em;
+    }
+  }
+  @media (max-width: 600px) {
+    & p:nth-child(3) {
+      display: none;
+    }
   }
 `;
