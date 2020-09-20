@@ -2,23 +2,27 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
   width: 100%;
-  padding: 40px;
-  min-height: 100%;
-  background-color: #0e1a1b;
+  padding: 20px;
+  background-color: #132526;
+  border: 15px solid #0e1a1b;
 `;
 
 export const GridTemplate = styled.ul`
   display: grid;
-  width: 100%;
+  flex: 0.8;
   min-height: 100%;
+  margin: 10px;
   grid-template-columns: repeat(18, 1fr);
   grid-template-rows: repeat(7, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   background-color: #132526;
-
+  @media (max-width: 1500px) {
+    min-width: 95%;
+  }
   @media (max-width: 1250px) {
     grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
     grid-template-rows: repeat(auto-fit, minmax(70px, 1fr));
@@ -40,7 +44,7 @@ export const GridItem = styled.li`
   & > p:nth-child(2) {
     width: 100%;
     text-align: center;
-    font-size: 2em;
+    font-size: 1.8em;
   }
   & > p:nth-child(3) {
     text-align: center;

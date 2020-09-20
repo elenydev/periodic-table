@@ -8,7 +8,7 @@ const DataElements: ElementsItem[] = require("../../data/elements.json");
 const NotSyntheticElements: number[] = Elements.slice(0, 126);
 const IGNORED_ELEMENTS_NUMBERS = [0, -1, -2];
 function Table(): JSX.Element {
-  const [activeElement, setActiveElement] = useState<number>(25);
+  const [activeElement, setActiveElement] = useState<number>(26);
 
   function showElementProperties(item: number) {
     setActiveElement(item);
