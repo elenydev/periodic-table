@@ -14,16 +14,25 @@ type AppProps = {
 };
 
 function ActiveElementCard({ active }: AppProps): JSX.Element {
+
+  // #0 czemu filter? Wszystko co sie da, poza komponent wyrzucamy
   const FilterDataElements = (active: number) => {
     return DataElements.filter((element) => element.atomic === active);
   };
+
+  // #1 po co to jest?
   const [currentElement, setCurrentElement] = useState<ElementsItem>(
     FilterDataElements(active)[0]
   );
 
+  // #2 po co to jest?
   useEffect(() => {
     setCurrentElement(FilterDataElements(active)[0]);
   }, [active]);
+
+
+  // odstepy w jsx dla lepszej czytelnosci
+
   return (
     <Card>
       <CardHeader className={currentElement.group}>
@@ -33,7 +42,10 @@ function ActiveElementCard({ active }: AppProps): JSX.Element {
         </CardHeaderDescription>
         <CardHeaderSymbol>{currentElement.symbol}</CardHeaderSymbol>
       </CardHeader>
+
       <CardList>
+        {/* tutaj zmapowalbys to lepiej, zamiast w ten sposob */}
+
         <CardListItem>
           <p>Atomic Number</p>
           <p>{currentElement.atomic}</p>
