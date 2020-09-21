@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { ElementsItem } from "../../ElementsItem";
 import {
   Card,
@@ -13,98 +13,48 @@ type AppProps = {
   active: number;
 };
 
-function ActiveElementCard({ active }: AppProps): JSX.Element {
-  const FilterDataElements = (active: number) => {
-    return DataElements.filter((element) => element.atomic === active);
-  };
-  const [currentElement, setCurrentElement] = useState<ElementsItem>(
-    FilterDataElements(active)[0]
-  );
+const ActiveElementCard = ({ active }: AppProps): JSX.Element => {
+  const currentElement: ElementsItem = DataElements[active - 1];
+  const { group, name, symbol } = currentElement;
+  const element = Object.keys(currentElement).slice(3, 21);
+  const elementValues = Object.values(currentElement).slice(3, 21);
 
-  useEffect(() => {
-    setCurrentElement(FilterDataElements(active)[0]);
-  }, [active]);
   return (
     <Card>
-      <CardHeader className={currentElement.group}>
+      <CardHeader className={group}>
         <CardHeaderDescription>
-          <p>{currentElement.name}</p>
-          <p>{currentElement.group.replace("_", " ")}</p>
+          <p>{name}</p>
+          <p>{group.replace(/_/g, " ")}</p>
         </CardHeaderDescription>
-        <CardHeaderSymbol>{currentElement.symbol}</CardHeaderSymbol>
+
+        <CardHeaderSymbol>{symbol}</CardHeaderSymbol>
       </CardHeader>
+
       <CardList>
-        <CardListItem>
-          <p>Atomic Number</p>
-          <p>{currentElement.atomic}</p>
-        </CardListItem>
-        <CardListItem>
-          <p>Atomic Mass</p>
-          <p>{currentElement.atomicMass}</p>
-        </CardListItem>
-        <CardListItem>
-          <p>Electronic C.</p>
-          <p>{currentElement.electronicConfiguration}</p>
-        </CardListItem>
-        <CardListItem>
-          <p>Electronegativity</p>
-          <p>{currentElement.electronegativity}</p>
-        </CardListItem>
-        <CardListItem>
-          <p>Atomic Radius</p>
-          <p>{currentElement.atomicRadius}</p>
-        </CardListItem>
-        <CardListItem>
-          <p>Ionic Radius</p>
-          <p>{currentElement.ionRadius}</p>
-        </CardListItem>
-        <CardListItem>
-          <p>Van del Waals Radius</p>
-          <p>{currentElement.vanDelWaalsRadius}</p>
-        </CardListItem>
-        <CardListItem>
-          <p>Ionization Energy</p>
-          <p>{currentElement.ionizationEnergy}</p>
-        </CardListItem>
-        <CardListItem>
-          <p>Electron Affinity</p>
-          <p>{currentElement.electronAffinity}</p>
-        </CardListItem>
-        <CardListItem>
-          <p>Oxidation States</p>
-          <p>{currentElement.oxidationStates}</p>
-        </CardListItem>
-        <CardListItem>
-          <p>Standard State</p>
-          <p>{currentElement.standardState}</p>
-        </CardListItem>
-        <CardListItem>
-          <p>Bonding Type</p>
-          <p>{currentElement.bondingType}</p>
-        </CardListItem>
-        <CardListItem>
-          <p>Melting Point</p>
-          <p>{currentElement.meltingPoint}</p>
-        </CardListItem>
-        <CardListItem>
-          <p>Boiling Point</p>
-          <p>{currentElement.boilingPoint}</p>
-        </CardListItem>
-        <CardListItem>
-          <p>Density</p>
-          <p>{currentElement.density}</p>
-        </CardListItem>
-        <CardListItem>
-          <p>Year Discovered</p>
-          <p>{currentElement.yearDiscovered}</p>
-        </CardListItem>
-        <CardListItem>
-          <p>Valency</p>
-          <p>{currentElement.valency}</p>
-        </CardListItem>
+        {element.map((el, index) => {
+          const caption = el
+            .replace(/([A-Z]+|[A-Z]?[a-z]+)(?=[A-Z]|\b)/g, "!$&")
+            .split("!");
+          const value: string | number = elementValues[index];
+          if (typeof value === "string") {
+            return (
+              <CardListItem key={index}>
+                <p>{caption.map((el) => el + " ")}</p>
+                <p>{value.replace(/_/g, " ")}</p>
+              </CardListItem>
+            );
+          } else {
+            return (
+              <CardListItem key={index}>
+                <p>{caption.map((el) => el + " ")}</p>
+                <p>{value}</p>
+              </CardListItem>
+            );
+          }
+        })}
       </CardList>
     </Card>
   );
-}
+};
 
 export default ActiveElementCard;
