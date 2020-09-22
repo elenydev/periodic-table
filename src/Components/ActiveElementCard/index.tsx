@@ -8,8 +8,8 @@ import {
   CardList,
   CardListItem,
 } from "./activeElementCard.styles";
-const DataElements: ElementsItem[] = require("../../data/elements.json");
-const SpacingTextAtCapitalLetters = /([A-Z]+|[A-Z]?[a-z]+)(?=[A-Z]|\b)/g;
+const dataElements: ElementsItem[] = require("../../data/elements.json");
+const spacingTextAtCapitalLetters = /([A-Z]+|[A-Z]?[a-z]+)(?=[A-Z]|\b)/g;
 type AppProps = {
   currentDisplayedElementIndex: number;
 };
@@ -18,7 +18,7 @@ const ActiveElementCard = ({
   currentDisplayedElementIndex,
 }: AppProps): JSX.Element => {
   const currentElement: ElementsItem =
-    DataElements[currentDisplayedElementIndex - 1];
+    dataElements[currentDisplayedElementIndex - 1];
   const { group, name, symbol } = currentElement;
 
   const ElementsConvertedToArray = Object.entries(currentElement).slice(3, 21); // without name,symbol and group properties from header and wrong valency
@@ -37,7 +37,7 @@ const ActiveElementCard = ({
       <CardList>
         {ElementsConvertedToArray.map(([key, value], index) => {
           const caption = key
-            .replace(SpacingTextAtCapitalLetters, "!$&")
+            .replace(spacingTextAtCapitalLetters, "!$&")
             .split("!");
           return (
             <CardListItem key={index}>

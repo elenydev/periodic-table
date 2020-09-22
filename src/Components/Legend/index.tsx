@@ -2,13 +2,15 @@ import React from "react";
 import { ElementsItem } from "../../ElementsItem";
 import { Wrapper, LegendGrid, GridItem, LegendHeader } from "./legend.styles";
 
-const DataElements = require("../../data/elements.json");
-const ConvertedObjectToArray: ElementsItem[] = Object.values(DataElements);
-const LegendArray: string[] = []; //array without group duplicates
-ConvertedObjectToArray.map((el: ElementsItem) => {
-  if (!LegendArray.includes(el.group)) LegendArray.push(el.group);
-  return null;
-}); //maping throught the array to remove duplicates
+const dataElements: ElementsItem[] = require("../../data/elements.json");
+
+const removeDuplicates = (array): any[] => {
+  return [...new Set(array)];
+};
+
+const legendArray: string[] = removeDuplicates(
+  Object.values(dataElements.map((el) => el.group))
+);
 
 const Legend = () => {
   return (
@@ -16,10 +18,10 @@ const Legend = () => {
       <LegendHeader>Legend: </LegendHeader>
 
       <LegendGrid>
-        {LegendArray.map((nameOfGroup, index) => {
+        {legendArray.map((element, index) => {
           return (
-            <GridItem key={index} className={nameOfGroup}>
-              <p>{nameOfGroup.replace(/_/g, " ")}</p>
+            <GridItem key={index} className={element}>
+              <p>{element.replace(/_/g, " ")}</p>
             </GridItem>
           );
         })}
