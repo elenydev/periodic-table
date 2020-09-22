@@ -9,15 +9,19 @@ import {
   CardListItem,
 } from "./activeElementCard.styles";
 const DataElements: ElementsItem[] = require("../../data/elements.json");
+const SpacingTextAtCapitalLetters = /([A-Z]+|[A-Z]?[a-z]+)(?=[A-Z]|\b)/g;
 type AppProps = {
-  active: number;
+  currentDisplayedElementIndex: number;
 };
 
-const ActiveElementCard = ({ active }: AppProps): JSX.Element => {
-  const currentElement: ElementsItem = DataElements[active - 1];
+const ActiveElementCard = ({
+  currentDisplayedElementIndex,
+}: AppProps): JSX.Element => {
+  const currentElement: ElementsItem =
+    DataElements[currentDisplayedElementIndex - 1];
   const { group, name, symbol } = currentElement;
-  const element = Object.keys(currentElement).slice(3, 21);
-  const elementValues = Object.values(currentElement).slice(3, 21);
+
+  const ElementsConvertedToArray = Object.entries(currentElement).slice(3, 21); // without name,symbol and group properties from header and wrong valency
 
   return (
     <Card>
@@ -31,26 +35,18 @@ const ActiveElementCard = ({ active }: AppProps): JSX.Element => {
       </CardHeader>
 
       <CardList>
-        {element.map((el, index) => {
-          const caption = el
-            .replace(/([A-Z]+|[A-Z]?[a-z]+)(?=[A-Z]|\b)/g, "!$&")
+        {ElementsConvertedToArray.map(([key, value]) => {
+          const caption = key
+            .replace(SpacingTextAtCapitalLetters, "!$&")
             .split("!");
-          const value: string | number = elementValues[index];
-          if (typeof value === "string") {
-            return (
-              <CardListItem key={index}>
-                <p>{caption.map((el) => el + " ")}</p>
-                <p>{value.replace(/_/g, " ")}</p>
-              </CardListItem>
-            );
-          } else {
-            return (
-              <CardListItem key={index}>
-                <p>{caption.map((el) => el + " ")}</p>
-                <p>{value}</p>
-              </CardListItem>
-            );
-          }
+          return (
+            <CardListItem>
+              <p>{caption.map((el) => el + " ")}</p>
+              <p>
+                {typeof value === "string" ? value.replace(/_/g, " ") : value}
+              </p>
+            </CardListItem>
+          );
         })}
       </CardList>
     </Card>

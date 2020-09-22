@@ -26,15 +26,13 @@ const Table = (): JSX.Element => {
       <Header />
 
       <Wrapper>
-        <ActiveElementCard active={activeElement} />
+        <ActiveElementCard currentDisplayedElementIndex={activeElement} />
 
         <GridTemplateDesktop>
           {NaturalElements.map((element: number, index: number) => {
             const currentElement: number = element;
             const currentElementProperties = DataElements[currentElement - 1];
-            if (IGNORED_ELEMENTS_NUMBERS.includes(currentElement)) {
-              return <Item key={index} currentElement={currentElement}></Item>;
-            } else {
+            if (!IGNORED_ELEMENTS_NUMBERS.includes(currentElement)) {
               return (
                 <Item
                   key={index}
@@ -45,6 +43,7 @@ const Table = (): JSX.Element => {
                 ></Item>
               );
             }
+            return <Item key={index} currentElement={currentElement}></Item>;
           })}
         </GridTemplateDesktop>
 

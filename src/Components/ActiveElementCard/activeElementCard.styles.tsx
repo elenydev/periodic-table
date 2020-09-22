@@ -72,7 +72,7 @@ export const CardHeaderSymbol = styled.p`
   width: 40%;
   align-items: center;
   justify-content: center;
-  font-size: 1.5em;
+  font-size: 25px;
 `;
 
 export const CardHeaderDescription = styled.div`
@@ -81,7 +81,7 @@ export const CardHeaderDescription = styled.div`
   justify-content: center;
   padding: 3px;
   width: 60%;
-  font-size: 1.1em;
+  font-size: 18px;
   & > p {
     width: 100%;
     margin: 3px 0;
@@ -106,7 +106,7 @@ export const CardListItem = styled.li`
   justify-content: space-between;
   padding: 10px 2px;
   word-break: break-all;
-  font-size: 0.7em;
+  font-size: 11px;
   &:nth-child(even) {
     background-color: #132526;
   }

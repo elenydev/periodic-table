@@ -10,28 +10,15 @@ type AppProps = {
   active?: string;
 };
 
-const Item = ({
-  currentElement,
-  currentElementProperties,
-  clickEvent,
-  active,
-}: AppProps): JSX.Element => {
-  if (currentElementProperties) {
-    const { group, symbol, name } = currentElementProperties;
+const Item = (props: AppProps): JSX.Element => {
+  const {
+    currentElement,
+    currentElementProperties,
+    clickEvent,
+    active,
+  } = props;
 
-    return (
-      <>
-        <GridItem
-          className={`${group}  ${active}`}
-          onClick={() => clickEvent()}
-        >
-          <p>{currentElement}</p>
-          <p>{symbol}</p>
-          <p>{name}</p>
-        </GridItem>
-      </>
-    );
-  } else {
+  if (!currentElementProperties) {
     return (
       <>
         <GridItem disabled>
@@ -40,6 +27,16 @@ const Item = ({
       </>
     );
   }
+  const { group, symbol, name } = currentElementProperties;
+  return (
+    <>
+      <GridItem className={`${group}  ${active}`} onClick={() => clickEvent()}>
+        <p>{currentElement}</p>
+        <p>{symbol}</p>
+        <p>{name}</p>
+      </GridItem>
+    </>
+  );
 };
 
 export default Item;

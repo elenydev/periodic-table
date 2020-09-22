@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   width: 100%;
   padding: 5px;
+  flex-wrap: wrap;
   background-color: #132526;
   border: 15px solid #0e1a1b;
   @media (min-width: 1024px) {
@@ -55,17 +56,16 @@ export const GridItem = styled.li`
   }
   & > p {
     width: 100%;
-    font-size: 0.7em;
+    font-size: 10px;
     padding: 1px;
   }
   & > p:nth-child(2) {
     text-align: center;
-    font-size: 1.6em;
+    font-size: 25px;
   }
   & > p:nth-child(3) {
     display: none;
     text-align: center;
-    font-size: 0.8em;
   }
   &.noble_gases {
     color: #7e57c2;
@@ -119,26 +119,26 @@ export const GridItem = styled.li`
   }
   @media (min-width: 1024px) {
     & > p {
-      font-size: 0.4em;
+      font-size: 8px;
       padding: 1px;
     }
     & > p:nth-child(2) {
-      font-size: 1.1em;
+      font-size: 20px;
     }
     & > p:nth-child(3) {
-      font-size: 0.45em;
+      font-size: 7.5px;
     }
   }
   @media (min-width: 1250px) {
     & > p {
-      font-size: 0.6em;
+      font-size: 10px;
       padding: 1px;
     }
     & > p:nth-child(2) {
-      font-size: 1.5em;
+      font-size: 25px;
     }
     & > p:nth-child(3) {
-      font-size: 0.6em;
+      font-size: 10px;
     }
   }
 `;
