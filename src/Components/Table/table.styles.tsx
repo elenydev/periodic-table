@@ -43,6 +43,7 @@ export const GridTemplateMobile = styled.ul`
     display: none;
   }
 `;
+
 export const GridItem = styled.li`
   display: flex;
   flex-direction: column;

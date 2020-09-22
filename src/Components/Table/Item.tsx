@@ -1,6 +1,7 @@
 import React from "react";
 import { ElementsItem } from "../../ElementsItem";
 import { GridItem } from "./table.styles";
+
 type AppProps = {
   currentElement: number;
   disabled?: boolean;
@@ -17,6 +18,7 @@ const Item = ({
 }: AppProps): JSX.Element => {
   if (currentElementProperties) {
     const { group, symbol, name } = currentElementProperties;
+
     return (
       <>
         <GridItem

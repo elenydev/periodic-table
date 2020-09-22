@@ -14,6 +14,7 @@ export const Card = styled.div`
     flex: 0.4;
   }
 `;
+
 export const CardHeader = styled.div`
   display: flex;
   font-weight: bold;
@@ -64,6 +65,7 @@ export const CardHeader = styled.div`
     color: #78909c;
   }
 `;
+
 export const CardHeaderSymbol = styled.p`
   display: flex;
   min-height: 100%;
@@ -72,6 +74,7 @@ export const CardHeaderSymbol = styled.p`
   justify-content: center;
   font-size: 1.5em;
 `;
+
 export const CardHeaderDescription = styled.div`
   display: flex;
   flex-direction: column;
@@ -87,12 +90,14 @@ export const CardHeaderDescription = styled.div`
     text-transform: capitalize;
   }
 `;
+
 export const CardList = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 `;
+
 export const CardListItem = styled.li`
   display: flex;
   width: 100%;

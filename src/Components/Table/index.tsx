@@ -8,6 +8,7 @@ import { ElementsItem } from "../../ElementsItem";
 import ActiveElementCard from "../ActiveElementCard/index";
 import Header from "../Header/index";
 import Item from "./Item";
+
 const Elements: [] = require("../../data/pt.json").flat(); // reducing array nesting
 const ElementsMobile: number[] = require("../../data/pt-mobile.json").flat(); //reducing array nesting
 const DataElements: ElementsItem[] = require("../../data/elements.json");
@@ -19,6 +20,7 @@ const Table = (): JSX.Element => {
   const handleActiveElement = (element: number) => {
     setActiveElement(element);
   };
+
   return (
     <>
       <Header />
