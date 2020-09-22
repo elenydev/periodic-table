@@ -1,8 +1,6 @@
 import styled from "styled-components";
 export const Wrapper = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-around;
   flex-direction: column;
   width: 100%;
   padding: 5px;
@@ -11,6 +9,7 @@ export const Wrapper = styled.div`
   border: 15px solid #0e1a1b;
   @media (min-width: 1024px) {
     flex-direction: row;
+    justify-content: flex-end;
   }
 `;
 

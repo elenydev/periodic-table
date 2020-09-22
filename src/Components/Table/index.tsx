@@ -8,6 +8,7 @@ import { ElementsItem } from "../../ElementsItem";
 import ActiveElementCard from "../ActiveElementCard/index";
 import Header from "../Header/index";
 import Item from "./Item";
+import Legend from "./../Legend/index";
 
 const Elements: [] = require("../../data/pt.json").flat(); // reducing array nesting
 const ElementsMobile: number[] = require("../../data/pt-mobile.json").flat(); //reducing array nesting
@@ -66,6 +67,8 @@ const Table = (): JSX.Element => {
             }
           })}
         </GridTemplateMobile>
+
+        <Legend />
       </Wrapper>
     </>
   );
