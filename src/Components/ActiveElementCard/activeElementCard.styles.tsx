@@ -3,22 +3,18 @@ import styled from "styled-components";
 export const Card = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 0.2;
+  width: 100%;
   margin: 10px;
   background-color: #0e1a1b;
   overflow-y: auto;
   max-height: 50vh;
   padding: 10px;
-  @media (max-width: 1500px) {
-    min-width: 40%;
-  }
-  @media (max-width: 1000px) {
-    min-width: 50%;
-  }
-  @media (max-width: 600px) {
-    min-width: 90%;
+
+  @media (min-width: 1024px) {
+    flex: 0.4;
   }
 `;
+
 export const CardHeader = styled.div`
   display: flex;
   font-weight: bold;
@@ -69,21 +65,23 @@ export const CardHeader = styled.div`
     color: #78909c;
   }
 `;
+
 export const CardHeaderSymbol = styled.p`
   display: flex;
   min-height: 100%;
   width: 40%;
   align-items: center;
   justify-content: center;
-  font-size: 2em;
+  font-size: 25px;
 `;
+
 export const CardHeaderDescription = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 3px;
   width: 60%;
-  font-size: 1em;
+  font-size: 18px;
   & > p {
     width: 100%;
     margin: 3px 0;
@@ -92,12 +90,14 @@ export const CardHeaderDescription = styled.div`
     text-transform: capitalize;
   }
 `;
+
 export const CardList = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 `;
+
 export const CardListItem = styled.li`
   display: flex;
   width: 100%;
@@ -106,7 +106,11 @@ export const CardListItem = styled.li`
   justify-content: space-between;
   padding: 10px 2px;
   word-break: break-all;
+  font-size: 11px;
   &:nth-child(even) {
     background-color: #132526;
+  }
+  & > p {
+    text-transform: capitalize;
   }
 `;

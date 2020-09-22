@@ -3,30 +3,45 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  flex-wrap: wrap;
+  flex-direction: column;
   width: 100%;
-  padding: 20px;
+  padding: 5px;
+  flex-wrap: wrap;
   background-color: #132526;
   border: 15px solid #0e1a1b;
+  @media (min-width: 1024px) {
+    flex-direction: row;
+  }
 `;
 
-export const GridTemplate = styled.ul`
-  display: grid;
-  flex: 0.8;
+export const GridTemplateDesktop = styled.ul`
+  display: none;
+  flex: 0.6;
   min-height: 100%;
-  margin: 10px;
+  margin: 5px;
   grid-template-columns: repeat(18, 1fr);
   grid-template-rows: repeat(7, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   background-color: #132526;
-  @media (max-width: 1500px) {
-    min-width: 95%;
+  @media (min-width: 1024px) {
+    display: grid;
   }
-  @media (max-width: 1250px) {
-    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(70px, 1fr));
-    gap: 5px 12px;
+`;
+
+export const GridTemplateMobile = styled.ul`
+  display: grid;
+  min-height: 100%;
+  margin: 10px;
+  padding: 5px;
+  width: 100%;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(18, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  background-color: #132526;
+  @media (min-width: 1024px) {
+    display: none;
   }
 `;
 
@@ -36,19 +51,21 @@ export const GridItem = styled.li`
   color: ${(props) => (props.disabled ? "transparent" : "#" + props.color)};
   align-items: center;
   cursor: ${(props) => (props.disabled ? "auto" : "pointer")};
+  &.active {
+    background-color: #929292;
+  }
   & > p {
     width: 100%;
-    font-size: 0.6em;
-    padding: 3px;
+    font-size: 10px;
+    padding: 1px;
   }
   & > p:nth-child(2) {
-    width: 100%;
     text-align: center;
-    font-size: 1.8em;
+    font-size: 25px;
   }
   & > p:nth-child(3) {
+    display: none;
     text-align: center;
-    font-size: 0.7em;
   }
   &.noble_gases {
     color: #7e57c2;
@@ -94,22 +111,34 @@ export const GridItem = styled.li`
   &.clear {
     color: #78909c;
   }
-  @media (max-width: 1250px) {
-    display: ${(props) => (props.disabled ? "none" : "flex")};
-    & > p {
-      font-size: 0.6em;
-      padding: 3px;
-    }
-    & > p:nth-child(2) {
-      font-size: 1.5em;
-    }
-    & > p:nth-child(3) {
-      font-size: 0.6em;
+
+  @media (min-width: 600px) {
+    & p:nth-child(3) {
+      display: block;
     }
   }
-  @media (max-width: 600px) {
-    & p:nth-child(3) {
-      display: none;
+  @media (min-width: 1024px) {
+    & > p {
+      font-size: 8px;
+      padding: 1px;
+    }
+    & > p:nth-child(2) {
+      font-size: 20px;
+    }
+    & > p:nth-child(3) {
+      font-size: 7.5px;
+    }
+  }
+  @media (min-width: 1250px) {
+    & > p {
+      font-size: 10px;
+      padding: 1px;
+    }
+    & > p:nth-child(2) {
+      font-size: 25px;
+    }
+    & > p:nth-child(3) {
+      font-size: 10px;
     }
   }
 `;

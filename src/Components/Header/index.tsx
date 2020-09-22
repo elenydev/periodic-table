@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-// import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import { IconButton } from "@material-ui/core";
+
 const HeaderElement = styled.div`
   display: flex;
   align-items: center;
@@ -18,16 +17,12 @@ const HeaderElement = styled.div`
     font-size: 2rem;
   }
 `;
-function Header(): JSX.Element {
+const Header = (): JSX.Element => {
   return (
     <HeaderElement>
-      <IconButton>
-        {/*<ArrowBackIcon />*/}
-        {/* cos mi ten arrowBack nie dziala, zakomentowalem */}
-      </IconButton>
       <h1>Periodic Table</h1>
     </HeaderElement>
   );
-}
+};
 
 export default Header;
