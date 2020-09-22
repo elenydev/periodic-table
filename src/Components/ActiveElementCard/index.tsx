@@ -35,12 +35,12 @@ const ActiveElementCard = ({
       </CardHeader>
 
       <CardList>
-        {ElementsConvertedToArray.map(([key, value]) => {
+        {ElementsConvertedToArray.map(([key, value], index) => {
           const caption = key
             .replace(SpacingTextAtCapitalLetters, "!$&")
             .split("!");
           return (
-            <CardListItem>
+            <CardListItem key={index}>
               <p>{caption.map((el) => el + " ")}</p>
               <p>
                 {typeof value === "string" ? value.replace(/_/g, " ") : value}
